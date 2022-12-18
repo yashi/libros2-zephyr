@@ -1,0 +1,72 @@
+manifest:
+  defaults:
+    remote: micro-ros
+
+  remotes:
+    - name: ros2
+      url-base: https://github.com/ros2
+    - name: micro-ros
+      url-base: https://github.com/micro-ROS
+    - name: eprosima
+      url-base: https://github.com/eprosima
+    - name: yashi
+      url-base: https://github.com/yashi
+
+  projects:
+    - name: common_interfaces
+      remote: yashi #ros2
+      revision: zephyr-humble
+
+    - name: microcdr
+      repo-path: micro-cdr
+      remote: yashi #eprosima
+      revision: zephyr-humble #ros2
+
+    - name: microxrcedds-client
+      repo-path: micro-xrce-dds-client
+      remote: yashi #eprosima
+      revision: zephyr-humble #ros2
+
+    - name: rcl
+      remote: yashi #micro-ros
+      revision: zephyr-humble
+
+    - name: rclc
+      remote: yashi #ros2
+      revision: zephyr-humble
+
+    - name: rcl_interfaces
+      remote: yashi #ros2
+      revision: zephyr-humble
+
+    - name: rcutils
+      remote: yashi #micro-ros
+      revision: zephyr-humble
+
+    - name: rmw
+      remote: yashi #ros2
+      revision: zephyr-humble
+
+    - name: rmw_microxrcedds
+      remote: yashi #micro-ros
+      revision: zephyr-humble
+
+    - name: ros2_tracing
+      remote: yashi #ros2
+      revision: zephyr-humble
+
+    - name: rosidl
+      remote: yashi #ros2
+      revision: zephyr-humble
+
+    - name: rosidl_typesupport
+      remote: yashi #micro-ros
+      revision: zephyr-humble
+
+    - name: rosidl_typesupport_microxrcedds
+      remote: yashi #micro-ros
+      revision: zephyr-humble
+
+    - name: unique_identifier_msgs
+      remote: yashi #ros2
+      revision: zephyr-humble

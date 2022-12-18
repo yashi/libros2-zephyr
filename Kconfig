@@ -1,0 +1,11 @@
+# Copyright (c) 2022 Space Cubics, LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+menu "micro-ROS"
+
+config MICRO_ROS
+	bool "micro-ROS for Zephyr"
+	help
+	  micro-ROS for Zephyr
+
+endmenu
