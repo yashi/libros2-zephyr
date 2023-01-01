@@ -1,0 +1,7 @@
+# Copyright (c) 2022 Space Cubics, LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+config COMMON_INTERFACES
+	bool "ROS 2 Common Interface Files"
+	help
+	  ROS 2 Common Interface Files (.msg and .srv).

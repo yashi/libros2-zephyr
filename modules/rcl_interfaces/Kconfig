@@ -1,0 +1,9 @@
+# Copyright (c) 2022 Space Cubics, LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+config RCL_INTERFACES
+	bool "rcl_interfaces: ROS 2 Interface files"
+	help
+	  rcl_interfaces contains a set of packages that primarily
+	  contain interface files (.msg and .srv) which are used both
+	  to implement client library concepts and for testing.

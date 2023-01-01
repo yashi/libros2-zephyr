@@ -1,0 +1,26 @@
+# Copyright (c) 2022 Space Cubics, LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+config MICRO_XRCE_DDS_CLIENT
+	bool "Micro XRCE-DDS Client"
+	help
+	  eProsima Micro XRCE-DDS is a library implementing the
+	  DDS-XRCE protocol as defined and maintained by the OMG,
+	  whose aim is to allow resource constrained devices such as
+	  microcontrollers to communicate with the DDS world as any
+	  other DDS actor would do. It follows a client/server
+	  paradigm and is composed by two libraries, the Micro
+	  XRCE-DDS Client and the Micro XRCE-DDS Agent. The Micro
+	  XRCE-DDS Clients are lightweight entities meant to be
+	  compiled on eXtremely Resource Constrained Environments,
+	  while the Micro XRCE-DDS Agent is a broker which bridges the
+	  Clients with the DDS world.
+
+config MICRO_XRCE_DDS_CLIENT_UDP
+	bool "Micro XRCE-DDS Client with UDP"
+
+config MICRO_XRCE_DDS_CLIENT_TCP
+	bool "Micro XRCE-DDS Client with TCP"
+
+config MICRO_XRCE_DDS_CLIENT_CUSTOM
+	bool "Micro XRCE-DDS Client with custom transport API"
