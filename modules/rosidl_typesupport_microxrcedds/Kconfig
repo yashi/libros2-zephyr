@@ -1,0 +1,7 @@
+# Copyright (c) 2022 Space Cubics, LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+config ROSIDL_TYPESUPPORT_MICROXRCEDDS_C
+	bool "ROSIDL type support for Micro XRCE-DDS"
+	help
+	  ROSIDL type support for Micro XRCE-DDS
