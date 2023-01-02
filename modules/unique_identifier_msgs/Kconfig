@@ -1,7 +1,0 @@
-# Copyright (c) 2022 Space Cubics, LLC.
-# SPDX-License-Identifier: Apache-2.0
-
-config UNIQUE_IDENTIFIER_MSGS
-	bool "unique_identifier_msgs: ROS 2 messages for Universally Unique Identifiers"
-	help
-	  ROS 2 messages for Universally Unique Identifiers.

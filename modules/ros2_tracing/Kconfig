@@ -1,7 +1,0 @@
-# Copyright (c) 2022 Space Cubics, LLC.
-# SPDX-License-Identifier: Apache-2.0
-
-config ROS2_TRACING
-	bool "ROS 2 Tracing"
-	help
-	  The ROS 2 Traceing

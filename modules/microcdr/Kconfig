@@ -1,9 +1,0 @@
-# Copyright (c) 2022 Space Cubics, LLC.
-# SPDX-License-Identifier: Apache-2.0
-
-config MICRO_CDR
-	bool "eProsima Micro CDR"
-	help
-	  eProsima Micro CDR is a C library implementing the CDR
-	  standard serialization methods. This library is focused on
-	  embedded and resource-limited systems.

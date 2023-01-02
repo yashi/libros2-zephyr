@@ -1,7 +1,0 @@
-# Copyright (c) 2022 Space Cubics, LLC.
-# SPDX-License-Identifier: Apache-2.0
-
-config RCLC
-	bool "rclc: ROS 2 Client Libraries for C"
-	help
-	  rclc: The ROS 2 Client Libraries for C

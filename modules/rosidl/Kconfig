@@ -1,7 +1,0 @@
-# Copyright (c) 2022 Space Cubics, LLC.
-# SPDX-License-Identifier: Apache-2.0
-
-config ROSIDL
-	bool "ROS 2 IDL"
-	help
-	  rosidl: The ROS 2 IDL
