@@ -1,1 +1,5 @@
-include(std_msgs.cmake)
+if(CONFIG_MICRO_ROS)
+
+  include(std_msgs.cmake)
+
+endif()
