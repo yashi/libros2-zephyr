@@ -1,7 +1,7 @@
 manifest:
   defaults:
     remote: micro-ros
-    revision: zephyr-humble
+    revision: main
 
   remotes:
     - name: ros2
