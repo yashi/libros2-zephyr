@@ -5,6 +5,7 @@ menu "micro-ROS"
 
 config MICRO_ROS
 	bool "micro-ROS for Zephyr"
+	select CPLUSPLUS
 	help
 	  micro-ROS for Zephyr
 
