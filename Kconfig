@@ -6,6 +6,7 @@ menu "micro-ROS"
 config MICRO_ROS
 	bool "micro-ROS for Zephyr"
 	select CPLUSPLUS
+	select POSIX_API if !ARCH_POSIX
 	help
 	  micro-ROS for Zephyr
 
