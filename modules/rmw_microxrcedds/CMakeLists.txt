@@ -67,15 +67,21 @@ if(CONFIG_MICRO_ROS)
     ${CMAKE_CURRENT_BINARY_DIR}/include/rmw_microxrcedds_c/config.h
   )
 
-  zephyr_library()
-  zephyr_include_directories(${ZEPHYR_CURRENT_MODULE_DIR}/rmw_microxrcedds_c/src)
-  zephyr_include_directories(${ZEPHYR_CURRENT_MODULE_DIR}/rmw_microxrcedds_c/include)
-  zephyr_include_directories(${CMAKE_CURRENT_BINARY_DIR}/include)
-  zephyr_include_directories(${ROS2_MICROCDR_INCLUDE_DIR})
-  zephyr_include_directories(${ROS2_MICROXRCEDDS_CLIENT_INCLUDE_DIR})
-  zephyr_include_directories(${ROS2_ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_INCLUDE_DIR})
+  zephyr_library_named(ros2_rmw_microxrcedds_c)
+  zephyr_library_include_directories(${ZEPHYR_CURRENT_MODULE_DIR}/rmw_microxrcedds_c/src)
+  zephyr_library_include_directories(PUBLIC ${ZEPHYR_CURRENT_MODULE_DIR}/rmw_microxrcedds_c/include)
+  zephyr_library_include_directories(PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/include)
 
   zephyr_library_compile_definitions(HAVE_C_TYPESUPPORT)
+
+  zephyr_library_link_libraries(
+    ros2_rcutils
+    ros2_rosidl_runtime_c
+    ros2_microxrcedds_client
+    ros2_microcdr
+    ros2_rmw
+    ros2_rosidl_typesupport_microxrcedds_c
+  )
 
   zephyr_library_sources(
     ${ZEPHYR_CURRENT_MODULE_DIR}/rmw_microxrcedds_c/src/identifiers.c

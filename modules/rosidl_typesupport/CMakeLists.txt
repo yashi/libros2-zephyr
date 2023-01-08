@@ -23,9 +23,9 @@ if(CONFIG_MICRO_ROS)
 
   include(idl_to_typesupport.cmake)
 
-  zephyr_library()
-  zephyr_include_directories(${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_typesupport_c/include)
-
+  zephyr_library_named(ros2_rosidl_typesupport_c)
+  zephyr_library_include_directories(PUBLIC ${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_typesupport_c/include)
+  zephyr_library_link_libraries(ros2_rosidl_runtime_c)
   zephyr_library_sources(
     ${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_typesupport_c/src/identifier.c
     ${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_typesupport_c/src/message_type_support_dispatch.cpp

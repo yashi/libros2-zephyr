@@ -70,7 +70,7 @@ gen_files(
   OUTPUT_FILES ${output_files}
 )
 
-add_custom_target(ros2_common_interfaces
+add_custom_target(ros2_gen_std_msgs_headers
   DEPENDS ${output_files}
 )
 
@@ -79,10 +79,15 @@ file(GLOB generated_files
   ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/detail/*.c
   ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/detail/microxrcedds/*.c
 )
-zephyr_library()
-zephyr_library_sources(${generated_files})
 
-set(ROS2_STD_MSGS_INCLUDE_DIR
-  ${CMAKE_CURRENT_BINARY_DIR}/include/
+zephyr_library_named(ros2_std_msgs)
+add_dependencies(ros2_std_msgs ros2_gen_std_msgs_headers)
+zephyr_library_include_directories(PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/include)
+zephyr_library_link_libraries(
+  ros2_rosidl_runtime_c
+  ros2_rosidl_typesupport_microxrcedds_c
+  ros2_microcdr
+  ros2_builtin_interfaces
+  ros2_rosidl_typesupport_c
 )
-zephyr_include_directories(${ROS2_STD_MSGS_INCLUDE_DIR})
+zephyr_library_sources(${generated_files})

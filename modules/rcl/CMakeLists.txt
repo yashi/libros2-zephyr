@@ -5,11 +5,17 @@ if(CONFIG_MICRO_ROS)
   option(RCL_LOGGING_ENABLED "Enable/disable logging" OFF)
 
 
-  zephyr_library()
-  zephyr_include_directories(${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/include)
-  zephyr_include_directories(${ROS2_ACTION_MSGS_INCLUDE_DIR})
-
-  add_dependencies(${ZEPHYR_CURRENT_LIBRARY} ros2_action_msgs)
+  zephyr_library_named(ros2_rcl)
+  zephyr_library_include_directories(PUBLIC ${ZEPHYR_CURRENT_MODULE_DIR}/rcl/include)
+  zephyr_library_link_libraries(
+    ros2_action_msgs
+    ros2_builtin_interfaces
+    ros2_unique_identifier_msgs
+    ros2_rcutils
+    ros2_rmw
+    ros2_rosidl_runtime_c
+    ros2_tracetools
+  )
 
   zephyr_library_sources(
     ${ZEPHYR_CURRENT_MODULE_DIR}/rcl/src/rcl/client.c
@@ -40,14 +46,6 @@ if(CONFIG_MICRO_ROS)
     ${ZEPHYR_CURRENT_MODULE_DIR}/rcl/src/rcl/validate_enclave_name.c
     ${ZEPHYR_CURRENT_MODULE_DIR}/rcl/src/rcl/validate_topic_name.c
     ${ZEPHYR_CURRENT_MODULE_DIR}/rcl/src/rcl/wait.c
-
-    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/action_client.c
-    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/action_server.c
-    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/goal_handle.c
-    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/goal_state_machine.c
-    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/graph.c
-    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/names.c
-    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/types.c
   )
 
   zephyr_library_sources_ifdef(${RCL_COMMAND_LINE_ENABLED}
@@ -60,6 +58,25 @@ if(CONFIG_MICRO_ROS)
     ${ZEPHYR_CURRENT_MODULE_DIR}/rcl/src/rcl/log_level.c
   )
 
-  zephyr_include_directories(${ZEPHYR_CURRENT_MODULE_DIR}/rcl/include)
+
+  zephyr_library_named(ros2_rcl_action)
+  zephyr_library_include_directories(PUBLIC ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/include)
+  zephyr_library_link_libraries(
+    ros2_action_msgs
+    ros2_rcl
+    ros2_rcutils
+    ros2_rmw
+    ros2_rosidl_runtime_c
+  )
+
+  zephyr_library_sources(
+    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/action_client.c
+    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/action_server.c
+    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/goal_handle.c
+    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/goal_state_machine.c
+    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/graph.c
+    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/names.c
+    ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/src/rcl_action/types.c
+  )
 
 endif()

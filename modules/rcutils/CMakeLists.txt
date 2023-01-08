@@ -29,9 +29,9 @@ if(CONFIG_MICRO_ROS)
     VERBATIM
   )
 
-  zephyr_library()
-  zephyr_include_directories(${ZEPHYR_CURRENT_MODULE_DIR}/include)
-  zephyr_include_directories(${CMAKE_CURRENT_BINARY_DIR}/include)
+  zephyr_library_named(ros2_rcutils)
+  zephyr_library_include_directories(PUBLIC ${ZEPHYR_CURRENT_MODULE_DIR}/include)
+  zephyr_library_include_directories(PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/include)
 
   if(CONFIG_POSIX_API)
     zephyr_library_include_directories(${ZEPHYR_BASE}/include/zephyr/posix)
@@ -69,9 +69,5 @@ if(CONFIG_MICRO_ROS)
   )
 
   zephyr_library_compile_definitions(_DEFAULT_SOURCE)
-
-  add_custom_target(ros2_rutils
-    DEPENDS ${LOGGING_MACROS_H}
-  )
 
 endif()

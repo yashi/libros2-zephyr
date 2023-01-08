@@ -7,9 +7,9 @@ if(CONFIG_MICRO_ROS)
     ${CMAKE_CURRENT_BINARY_DIR}/tracetools/include/tracetools/config.h
   )
 
-  zephyr_library()
-  zephyr_include_directories(${ZEPHYR_CURRENT_MODULE_DIR}/tracetools/include)
-  zephyr_include_directories(${CMAKE_CURRENT_BINARY_DIR}/tracetools/include)
+  zephyr_library_named(ros2_tracetools)
+  zephyr_library_include_directories(PUBLIC ${ZEPHYR_CURRENT_MODULE_DIR}/tracetools/include)
+  zephyr_library_include_directories(PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/tracetools/include)
 
 
   zephyr_library_sources(

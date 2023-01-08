@@ -14,6 +14,10 @@ gen_files(
   OUTPUT_FILES ${output_files}
 )
 
-add_custom_target(ros2_builtin_interfaces
+add_custom_target(ros2_gen_builtin_interfaces_headers
   DEPENDS ${output_files}
 )
+
+zephyr_interface_library_named(ros2_builtin_interfaces)
+add_dependencies(ros2_builtin_interfaces ros2_gen_builtin_interfaces_headers)
+target_include_directories(ros2_builtin_interfaces INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/include)

@@ -21,9 +21,7 @@ if(CONFIG_MICRO_ROS)
 
   include(idl_to_typesupport_microxrcedds.cmake)
 
-  set(ROS2_ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_INCLUDE_DIR
-    ${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_typesupport_microxrcedds_c/include
-    PARENT_SCOPE
-  )
+  zephyr_interface_library_named(ros2_rosidl_typesupport_microxrcedds_c)
+  target_include_directories(ros2_rosidl_typesupport_microxrcedds_c INTERFACE ${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_typesupport_microxrcedds_c/include)
 
 endif()

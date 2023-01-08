@@ -15,15 +15,10 @@ gen_files(
   OUTPUT_FILES ${output_files}
 )
 
-add_custom_target(ros2_${TARGET}
+add_custom_target(ros2_gen_action_msgs_headers
   DEPENDS ${output_files}
 )
-add_dependencies(ros2_${TARGET}
-  ros2_builtin_interfaces
-  ros2_unique_identifier_msgs
-)
-set(ROS2_ACTION_MSGS_INCLUDE_DIR
-  ${CMAKE_CURRENT_BINARY_DIR}/include/
-  ${ROS2_UNIQUE_IDENTIFIER_MSGS_INCLUDE_DIR}
-  PARENT_SCOPE
-)
+
+zephyr_interface_library_named(ros2_action_msgs)
+add_dependencies(ros2_action_msgs ros2_gen_action_msgs_headers)
+target_include_directories(ros2_action_msgs INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/include)

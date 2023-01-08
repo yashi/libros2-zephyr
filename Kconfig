@@ -10,6 +10,12 @@ config MICRO_ROS
 	help
 	  micro-ROS for Zephyr
 
+if MICRO_ROS
+
+config APP_LINK_WITH_ROS2
+	bool "Link 'app' with micro-ROS"
+	default y
+
 config MICRO_XRCE_DDS_CLIENT_UDP
 	bool "Micro XRCE-DDS Client with UDP"
 
@@ -18,5 +24,7 @@ config MICRO_XRCE_DDS_CLIENT_TCP
 
 config MICRO_XRCE_DDS_CLIENT_CUSTOM
 	bool "Micro XRCE-DDS Client with custom transport API"
+
+endif
 
 endmenu

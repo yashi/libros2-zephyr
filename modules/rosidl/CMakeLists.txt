@@ -1,9 +1,14 @@
 if(CONFIG_MICRO_ROS)
 
-  zephyr_library()
-  zephyr_include_directories(${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_runtime_c/include)
-  zephyr_include_directories(${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_typesupport_interface/include)
+  zephyr_interface_library_named(ros2_rosidl_typesupport_interface)
+  target_include_directories(ros2_rosidl_typesupport_interface
+    INTERFACE ${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_typesupport_interface/include)
 
+  zephyr_library_named(ros2_rosidl_runtime_c)
+  zephyr_library_include_directories(PUBLIC ${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_runtime_c/include)
+  zephyr_library_link_libraries(
+    ros2_rcutils
+    ros2_rosidl_typesupport_interface)
   zephyr_library_sources(
     ${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_runtime_c/src/message_type_support.c
     ${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_runtime_c/src/primitives_sequence_functions.c

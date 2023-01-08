@@ -13,13 +13,12 @@ if(CONFIG_MICRO_ROS)
     OUTPUT_FILES ${output_files}
   )
 
-  add_custom_target(ros2_unique_identifier_msgs
+  add_custom_target(ros2_gen_unique_identifier_msgs_headers
     DEPENDS ${output_files}
   )
 
-  set(ROS2_UNIQUE_IDENTIFIER_MSGS_INCLUDE_DIR
-    ${CMAKE_CURRENT_BINARY_DIR}/include
-    PARENT_SCOPE
-  )
+  zephyr_interface_library_named(ros2_unique_identifier_msgs)
+  add_dependencies(ros2_unique_identifier_msgs ros2_gen_unique_identifier_msgs_headers)
+  target_include_directories(ros2_unique_identifier_msgs INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/include)
 
 endif()

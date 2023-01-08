@@ -1,9 +1,8 @@
 if(CONFIG_MICRO_ROS)
 
-  zephyr_library()
-  zephyr_library_include_directories(${ROS2_MICROCDR_INCLUDE_DIR})
-  zephyr_library_include_directories(${ZEPHYR_CURRENT_MODULE_DIR}/include)
-  zephyr_library_include_directories(${CMAKE_CURRENT_BINARY_DIR}/include)
+  zephyr_library_named(ros2_microxrcedds_client)
+  zephyr_library_include_directories(PUBLIC ${ZEPHYR_CURRENT_MODULE_DIR}/include)
+  zephyr_library_include_directories(PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/include)
 
   if(CONFIG_POSIX_API)
     zephyr_library_include_directories(${ZEPHYR_BASE}/include/zephyr/posix)
@@ -66,12 +65,6 @@ if(CONFIG_MICRO_ROS)
     ${CMAKE_CURRENT_BINARY_DIR}/include/uxr/client/config.h
   )
 
-  add_dependencies(${ZEPHYR_CURRENT_LIBRARY} ros2_micro_cdr)
-
-  set(ROS2_MICROXRCEDDS_CLIENT_INCLUDE_DIR
-    ${ZEPHYR_CURRENT_MODULE_DIR}/include
-    ${CMAKE_CURRENT_BINARY_DIR}/include
-    PARENT_SCOPE
-  )
+  zephyr_library_link_libraries(ros2_microcdr)
 
 endif()
