@@ -1,4 +1,6 @@
 if(CONFIG_MICRO_ROS)
+  include(cmake/string_camel_case_to_lower_case_underscore.cmake)
+
   zephyr_interface_library_named(ros2)
   target_link_libraries(ros2 INTERFACE
     ros2_std_msgs

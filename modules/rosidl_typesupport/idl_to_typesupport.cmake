@@ -22,11 +22,13 @@ function(idl_to_typesupport)
   )
 
   set(typesupports rosidl_typesupport_microxrcedds_c)
-  execute_process(
+  add_custom_command(
+    OUTPUT ${IDL2X_OUTPUT_FILES}
     COMMAND ${CMAKE_COMMAND} -E env PYTHONPATH=$ENV{PYTHONPATH}
     ${rosidl_typesupport_c}
     --generator-arguments-file ${CMAKE_CURRENT_BINARY_DIR}/${IDL2X_TARGET}_typesupport.json
     --typesupports ${typesupports}
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Generating C code for ROS interfaces (${IDL2X_TARGET})"
   )
 endfunction()

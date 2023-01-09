@@ -28,20 +28,14 @@ function(idl_to_files)
   # application developers; no need to worry about header file
   # dependencies.
   # FIXME: dependencies to the input files are not set.
-  execute_process(
+  add_custom_command(
+    OUTPUT ${IDL2X_OUTPUT_FILES}
     COMMAND ${CMAKE_COMMAND} -E env PYTHONPATH=$ENV{PYTHONPATH}
     ${rosidl_generator_c}
     --generator-arguments-file ${CMAKE_CURRENT_BINARY_DIR}/${IDL2X_TARGET}_generator.json
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Generating C code for ROS interfaces (${IDL2X_TARGET})"
   )
-#  add_custom_command(
-#    OUTPUT ${IDL2X_OUTPUT_FILES}
-#    COMMAND ${CMAKE_COMMAND} -E env PYTHONPATH=$ENV{PYTHONPATH}
-#    ${rosidl_generator_c}
-#    --generator-arguments-file ${CMAKE_CURRENT_BINARY_DIR}/${IDL2X_TARGET}_generator.json
-#    MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/${IDL2X_TARGET}_generator.json
-#    COMMENT "Generating C code for ROS interfaces (${IDL2X_TARGET})"
-#  )
 
   # Change PROJECT_NAME temporarily
   set(PROJECT_NAME ${GENFILES_TARGET})

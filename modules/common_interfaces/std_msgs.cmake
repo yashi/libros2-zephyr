@@ -1,84 +1,76 @@
 set(TARGET std_msgs)
-set(non_idl_tuples
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Bool.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Byte.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/ByteMultiArray.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Char.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/ColorRGBA.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Empty.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Float32.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Float32MultiArray.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Float64.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Float64MultiArray.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Header.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Int16.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Int16MultiArray.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Int32.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Int32MultiArray.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Int64.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Int64MultiArray.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Int8.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/Int8MultiArray.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/MultiArrayDimension.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/MultiArrayLayout.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/String.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/UInt16.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/UInt16MultiArray.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/UInt32.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/UInt32MultiArray.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/UInt64.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/UInt64MultiArray.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/UInt8.msg"
-  "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:msg/UInt8MultiArray.msg"
+set(msg_files
+  "msg/Empty.msg"
+  "msg/Bool.msg"
+  "msg/Byte.msg"
+  "msg/Char.msg"
+  "msg/String.msg"
+  "msg/Int8.msg"
+  "msg/Int16.msg"
+  "msg/Int32.msg"
+  "msg/Int64.msg"
+  "msg/UInt8.msg"
+  "msg/UInt16.msg"
+  "msg/UInt32.msg"
+  "msg/UInt64.msg"
+  "msg/Float32.msg"
+  "msg/Float64.msg"
+  "msg/ByteMultiArray.msg"
+  "msg/Int8MultiArray.msg"
+  "msg/Int16MultiArray.msg"
+  "msg/Int32MultiArray.msg"
+  "msg/Int64MultiArray.msg"
+  "msg/UInt8MultiArray.msg"
+  "msg/UInt16MultiArray.msg"
+  "msg/UInt32MultiArray.msg"
+  "msg/UInt64MultiArray.msg"
+  "msg/Float32MultiArray.msg"
+  "msg/Float64MultiArray.msg"
+  "msg/MultiArrayDimension.msg"
+  "msg/MultiArrayLayout.msg"
+  "msg/Header.msg"
+  "msg/ColorRGBA.msg"
 )
-set(output_files
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/bool.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/byte.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/byte_multi_array.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/char.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/color_rgba.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/empty.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/float32.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/float32_multi_array.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/float64.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/float64_multi_array.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/header.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/int16.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/int16_multi_array.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/int32.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/int32_multi_array.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/int64.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/int64_multi_array.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/int8.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/int8_multi_array.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/multi_array_dimension.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/multi_array_layout.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/string.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/u_int16.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/u_int16_multi_array.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/u_int32.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/u_int32_multi_array.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/u_int64.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/u_int64_multi_array.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/u_int8.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/u_int8_multi_array.h
-)
+
+list(TRANSFORM msg_files
+  PREPEND "${ZEPHYR_CURRENT_MODULE_DIR}/${TARGET}:"
+  OUTPUT_VARIABLE non_idl_tuples)
+
+set(output_files "")
+set(output_typesupport "")
+set(output_typesupport_microxrcedds "")
+foreach(msg ${msg_files})
+  string_camel_case_to_lower_case_underscore(${msg} msg_lower)
+  cmake_path(GET msg_lower STEM stem)
+  cmake_path(GET msg_lower PARENT_PATH parent_path)
+  # generated by idl_to_files
+  list(APPEND output_files "${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/${parent_path}/${stem}.h")
+  list(APPEND output_files "${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/${parent_path}/detail/${stem}__functions.h")
+  list(APPEND output_files "${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/${parent_path}/detail/${stem}__functions.c")
+  list(APPEND output_files "${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/${parent_path}/detail/${stem}__struct.h")
+  list(APPEND output_files "${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/${parent_path}/detail/${stem}__type_support.h")
+  # generated by idl_to_typesupport
+  list(APPEND output_typesupport "${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/${parent_path}/${stem}__type_support.cpp")
+  # generated by idl_to_typesupport_microxrcedds
+  list(APPEND output_typesupport_microxrcedds "${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/${parent_path}/detail/${stem}__rosidl_typesupport_microxrcedds_c.h")
+  list(APPEND output_typesupport_microxrcedds "${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/${parent_path}/detail/microxrcedds/${stem}__type_support_c.c")
+endforeach()
 
 gen_files(
   TARGET ${TARGET}
   NON_IDL_TUPLES ${non_idl_tuples}
   OUTPUT_FILES ${output_files}
+  OUTPUT_TYPESUPPORT ${output_typesupport}
+  OUTPUT_TYPESUPPORT_MICROXRCEDDS ${output_typesupport_microxrcedds}
 )
 
 add_custom_target(ros2_gen_std_msgs_headers
   DEPENDS ${output_files}
 )
 
-file(GLOB generated_files
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/*.cpp
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/detail/*.c
-  ${CMAKE_CURRENT_BINARY_DIR}/include/${TARGET}/msg/detail/microxrcedds/*.c
-)
+list(FILTER output_files INCLUDE REGEX "\\.(c|cpp)$")
+list(FILTER output_typesupport INCLUDE REGEX "\\.(c|cpp)$")
+list(FILTER output_typesupport_microxrcedds INCLUDE REGEX "\\.(c|cpp)$")
 
 zephyr_library_named(ros2_std_msgs)
 add_dependencies(ros2_std_msgs ros2_gen_std_msgs_headers)
@@ -90,4 +82,7 @@ zephyr_library_link_libraries(
   ros2_builtin_interfaces
   ros2_rosidl_typesupport_c
 )
-zephyr_library_sources(${generated_files})
+zephyr_library_sources(
+  ${output_files}
+  ${output_typesupport}
+  ${output_typesupport_microxrcedds})

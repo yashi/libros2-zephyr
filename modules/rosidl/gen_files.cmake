@@ -1,6 +1,6 @@
 function(gen_files)
   set(single_args "TARGET")
-  set(multi_args "NON_IDL_TUPLES;OUTPUT_FILES")
+  set(multi_args "NON_IDL_TUPLES;OUTPUT_FILES;OUTPUT_TYPESUPPORT;OUTPUT_TYPESUPPORT_MICROXRCEDDS")
   cmake_parse_arguments(GENFILES "" "${single_args}" "${multi_args}" ${ARGN})
 
   if(NOT DEFINED GENFILES_TARGET)
@@ -28,10 +28,12 @@ function(gen_files)
   idl_to_typesupport(
     TARGET ${GENFILES_TARGET}
     IDL_TUPLES ${idl_tuples}
+    OUTPUT_FILES ${GENFILES_OUTPUT_TYPESUPPORT}
   )
 
   idl_to_typesupport_microxrcedds(
     TARGET ${GENFILES_TARGET}
     IDL_TUPLES ${idl_tuples}
+    OUTPUT_FILES ${GENFILES_OUTPUT_TYPESUPPORT_MICROXRCEDDS}
   )
 endfunction()
