@@ -1,25 +1,25 @@
 function(idl_to_files)
   set(single_args "TARGET")
   set(multi_args "IDL_TUPLES;OUTPUT_FILES")
-  cmake_parse_arguments(IDL2FILES "" "${single_args}" "${multi_args}" ${ARGN})
+  cmake_parse_arguments(IDL2X "" "${single_args}" "${multi_args}" ${ARGN})
 
-  if(NOT DEFINED IDL2FILES_TARGET)
+  if(NOT DEFINED IDL2X_TARGET)
     message(FATAL_ERROR "${CMAKE_CURRENT_FUNCTION}(${ARGV0}) requires TARGET")
   endif()
-  if(NOT DEFINED IDL2FILES_IDL_TUPLES)
+  if(NOT DEFINED IDL2X_IDL_TUPLES)
     message(FATAL_ERROR "${CMAKE_CURRENT_FUNCTION}(${ARGV0}) requires IDL_TUPLES")
   endif()
-  if(NOT DEFINED IDL2FILES_OUTPUT_FILES)
+  if(NOT DEFINED IDL2X_OUTPUT_FILES)
     message(FATAL_ERROR "${CMAKE_CURRENT_FUNCTION}(${ARGV0}) requires OUTPUT_FILES")
   endif()
 
   file(GLOB templates ${rosidl_generator_c_template_dir}/*)
   rosidl_write_generator_arguments(
-    ${CMAKE_CURRENT_BINARY_DIR}/${IDL2FILES_TARGET}_generator.json
-    PACKAGE_NAME ${IDL2FILES_TARGET}
-    IDL_TUPLES ${IDL2FILES_IDL_TUPLES}
+    ${CMAKE_CURRENT_BINARY_DIR}/${IDL2X_TARGET}_generator.json
+    PACKAGE_NAME ${IDL2X_TARGET}
+    IDL_TUPLES ${IDL2X_IDL_TUPLES}
     #ROS_INTERFACE_DEPENDENCIES "${_dependencies}"
-    OUTPUT_DIR "include/${IDL2FILES_TARGET}"
+    OUTPUT_DIR "include/${IDL2X_TARGET}"
     TEMPLATE_DIR "${rosidl_generator_c_template_dir}"
     TARGET_DEPENDENCIES ${templates} # this is just a workaround
   )
@@ -31,16 +31,16 @@ function(idl_to_files)
   execute_process(
     COMMAND ${CMAKE_COMMAND} -E env PYTHONPATH=$ENV{PYTHONPATH}
     ${rosidl_generator_c}
-    --generator-arguments-file ${CMAKE_CURRENT_BINARY_DIR}/${IDL2FILES_TARGET}_generator.json
+    --generator-arguments-file ${CMAKE_CURRENT_BINARY_DIR}/${IDL2X_TARGET}_generator.json
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   )
 #  add_custom_command(
-#    OUTPUT ${IDL2FILES_OUTPUT_FILES}
+#    OUTPUT ${IDL2X_OUTPUT_FILES}
 #    COMMAND ${CMAKE_COMMAND} -E env PYTHONPATH=$ENV{PYTHONPATH}
 #    ${rosidl_generator_c}
-#    --generator-arguments-file ${CMAKE_CURRENT_BINARY_DIR}/${IDL2FILES_TARGET}_generator.json
-#    MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/${IDL2FILES_TARGET}_generator.json
-#    COMMENT "Generating C code for ROS interfaces (${IDL2FILES_TARGET})"
+#    --generator-arguments-file ${CMAKE_CURRENT_BINARY_DIR}/${IDL2X_TARGET}_generator.json
+#    MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/${IDL2X_TARGET}_generator.json
+#    COMMENT "Generating C code for ROS interfaces (${IDL2X_TARGET})"
 #  )
 
   # Change PROJECT_NAME temporarily
