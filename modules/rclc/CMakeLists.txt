@@ -2,10 +2,7 @@ if(CONFIG_MICRO_ROS)
 
   zephyr_library_named(ros2_rclc)
   zephyr_library_include_directories(PUBLIC ${ZEPHYR_CURRENT_MODULE_DIR}/rclc/include)
-
-  if(CONFIG_POSIX_API)
-    zephyr_library_include_directories(${ZEPHYR_BASE}/include/zephyr/posix)
-  endif()
+  zephyr_library_include_directories_ifdef(CONFIG_POSIX_API ${ZEPHYR_BASE}/include/zephyr/posix)
 
   zephyr_library_sources(
     ${ZEPHYR_CURRENT_MODULE_DIR}/rclc/src/rclc/init.c
