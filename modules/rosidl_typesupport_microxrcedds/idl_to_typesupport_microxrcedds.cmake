@@ -38,11 +38,11 @@ function(idl_to_typesupport_microxrcedds)
   )
 
   # Change PROJECT_NAME temporarily
-  set(PROJECT_NAME ${GENFILES_TARGET})
-  string(TOUPPER "${GENFILES_TARGET}" PROJECT_NAME_UPPER)
+  set(PROJECT_NAME ${IDL2X_TARGET})
+  string(TOUPPER "${IDL2X_TARGET}" PROJECT_NAME_UPPER)
   configure_file(
     "${rosidl_typesupport_microxrcedds_c_template_dir}/rosidl_typesupport_microxrcedds_c__visibility_control.h.in"
-    "include/${GENFILES_TARGET}/msg/rosidl_typesupport_microxrcedds_c__visibility_control.h"
+    "include/${IDL2X_TARGET}/msg/rosidl_typesupport_microxrcedds_c__visibility_control.h"
     @ONLY
   )
 endfunction()
