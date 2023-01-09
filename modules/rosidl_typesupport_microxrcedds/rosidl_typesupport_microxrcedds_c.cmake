@@ -1,0 +1,3 @@
+zephyr_library_named(ros2_rosidl_typesupport_microxrcedds_c)
+zephyr_library_include_directories(PUBLIC ${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_typesupport_microxrcedds_c/include)
+zephyr_library_sources(${ZEPHYR_CURRENT_MODULE_DIR}/rosidl_typesupport_microxrcedds_c/src/identifier.c)
