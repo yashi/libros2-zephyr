@@ -34,7 +34,7 @@ function(idl_to_files)
     ${rosidl_generator_c}
     --generator-arguments-file ${CMAKE_CURRENT_BINARY_DIR}/${IDL2X_TARGET}_generator.json
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    COMMENT "Generating C code for ROS interfaces (${IDL2X_TARGET})"
+    COMMENT "Generating C code for ROS interfaces (${IDL2X_TARGET}) using rosidl_generator_c"
   )
 
   # Change PROJECT_NAME temporarily

@@ -29,6 +29,6 @@ function(idl_to_typesupport)
     --generator-arguments-file ${CMAKE_CURRENT_BINARY_DIR}/${IDL2X_TARGET}_typesupport.json
     --typesupports ${typesupports}
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    COMMENT "Generating C code for ROS interfaces (${IDL2X_TARGET})"
+    COMMENT "Generating C code for ROS interfaces (${IDL2X_TARGET}) using rosidl_typesupport_c"
   )
 endfunction()
