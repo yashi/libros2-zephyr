@@ -71,3 +71,7 @@ manifest:
     - name: unique_identifier_msgs
       remote: yashi #ros2
       revision: iron
+
+    - name: rosidl_dynamic_typesupport
+      remote: yashi #micro-ros
+      revision: iron

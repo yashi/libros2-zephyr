@@ -3,7 +3,10 @@ if(CONFIG_MICRO_ROS)
   zephyr_library_named(ros2_rmw)
   zephyr_include_directories(${ZEPHYR_CURRENT_MODULE_DIR}/rmw/include)
   zephyr_include_directories(${ZEPHYR_RCUTILS_MODULE_DIR}/include)
-  zephyr_library_link_libraries(ros2_rcutils)
+  zephyr_library_link_libraries(
+    ros2_rcutils
+    ros2_rosidl_dynamic_typesupport
+  )
 
   zephyr_library_sources(
     ${ZEPHYR_CURRENT_MODULE_DIR}/rmw/src/allocators.c
