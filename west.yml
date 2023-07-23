@@ -16,44 +16,58 @@ manifest:
   projects:
     - name: common_interfaces
       remote: yashi #ros2
+      revision: iron
 
     - name: microcdr
       repo-path: micro-cdr
       remote: yashi #eprosima
+      revision: iron
 
     - name: microxrcedds-client
       repo-path: micro-xrce-dds-client
       remote: yashi #eprosima
+      revision: iron
 
     - name: rcl
       remote: yashi #micro-ros
+      revision: iron
 
     - name: rclc
       remote: yashi #ros2
+      revision: iron
 
     - name: rcl_interfaces
       remote: yashi #ros2
+      revision: iron
 
     - name: rcutils
       remote: yashi #micro-ros
+      revision: iron
 
     - name: rmw
       remote: yashi #ros2
+      revision: iron
 
     - name: rmw_microxrcedds
       remote: yashi #micro-ros
+      revision: iron
 
     - name: ros2_tracing
       remote: yashi #ros2
+      revision: iron
 
     - name: rosidl
       remote: yashi #ros2
+      revision: iron
 
     - name: rosidl_typesupport
       remote: yashi #micro-ros
+      revision: iron
 
     - name: rosidl_typesupport_microxrcedds
       remote: yashi #micro-ros
+      revision: iron
 
     - name: unique_identifier_msgs
       remote: yashi #ros2
+      revision: iron
