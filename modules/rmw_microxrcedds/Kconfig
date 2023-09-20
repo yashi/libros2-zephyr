@@ -1,0 +1,204 @@
+menu "RMW Micro XRCE-DDS"
+
+config ROS2_RMW_MICROXRCEDDS
+	bool "RMW implementation using Micro XRCE-DDS"
+	default y
+	help
+	  This option enables the ROS2 rmw_microxrcedds.
+
+if ROS2_RMW_MICROXRCEDDS
+
+choice ROS2_RMW_MICROXRCEDDS_TRANSPORT
+	prompt "Transport to use"
+	default ROS2_RMW_MICROXRCEDDS_TRANSPORT_CUSTOM
+	help
+	  Select Micro XRCE-DDS transport to use.
+
+config ROS2_RMW_MICROXRCEDDS_TRANSPORT_UDP
+	bool "UDP"
+
+config ROS2_RMW_MICROXRCEDDS_TRANSPORT_TCP
+	bool "TCP"
+
+config ROS2_RMW_MICROXRCEDDS_TRANSPORT_SERIAL
+	bool "Serial Port"
+
+config ROS2_RMW_MICROXRCEDDS_TRANSPORT_CUSTOM
+	bool "Custom Transport"
+
+endchoice
+
+choice ROS2_RMW_MICROXRCEDDS_IP_VERSION
+	prompt "IP version to use"
+	depends on ROS2_RMW_MICROXRCEDDS_TRANSPORT_UDP || ROS2_RMW_MICROXRCEDDS_TRANSPORT_TCP
+	default ROS2_RMW_MICROXRCEDDS_IPV4
+	help
+	  Select Micro XRCE-DDS transport to use.
+
+config ROS2_RMW_MICROXRCEDDS_IPV4
+	bool "IPv4"
+
+config ROS2_RMW_MICROXRCEDDS_IPV6
+	bool "IPv6"
+
+endchoice
+
+choice ROS2_RMW_MICROXRCEDDS_CREATION_MODE
+	prompt "Creation mode"
+	default ROS2_RMW_MICROXRCEDDS_CREATION_MODE_BIN
+	help
+	  Select a set of functions for entity creations on the Agent.
+	  See "Creation Mode: Client" in eProsima Micro XRCE-DDS
+	  documentation.
+
+	  Do not confused with CreationMode type in the spec, DDS
+	  XRCE, version 1.0.
+
+config ROS2_RMW_MICROXRCEDDS_CREATION_MODE_BIN
+	bool "Binary"
+
+config ROS2_RMW_MICROXRCEDDS_CREATION_MODE_REFS
+	bool "References"
+
+endchoice
+
+config ROS2_RMW_MICROXRCEDDS_MAX_HISTORY
+	int "Max number of histroy slots for RMW subscriptions"
+	default 8
+	help
+	  This value sets the number of history slots available for
+	  RMW subscriptions, requests and replies
+
+config ROS2_RMW_MICROXRCEDDS_MAX_SESSIONS
+	int "Max number of sessions"
+	default 1
+	help
+	  This value sets the maximum number of Micro XRCE-DDS
+	  sessions.
+
+config ROS2_RMW_MICROXRCEDDS_MAX_NODES
+	int "Max number of nodes"
+	default 4
+	help
+	  This value sets the maximum number of nodes.
+
+config ROS2_RMW_MICROXRCEDDS_MAX_PUBLISHERS
+	int "Max number of publishers"
+	default 4
+	help
+	  This value sets the maximum number of publishers for an
+	  application.
+
+config ROS2_RMW_MICROXRCEDDS_MAX_SUBSCRIPTIONS
+	int "Max number of subscriptions"
+	default 4
+	help
+	  This value sets the maximum number of subscriptions for an
+	  application.
+
+config ROS2_RMW_MICROXRCEDDS_MAX_SERVICES
+	int "Max number of services"
+	default 4
+	help
+	  This value sets the maximum number of services for an
+	  application.
+
+config ROS2_RMW_MICROXRCEDDS_MAX_CLIENTS
+	int "Max number of clients"
+	default 4
+	help
+	  This value sets the maximum number of clients for an
+	  application.
+
+config ROS2_RMW_MICROXRCEDDS_MAX_WAIT_SETS
+	int "Max number of wait sets"
+	default 4
+	help
+	  This value sets the maximum number of wait sets for an
+	  application.
+
+config ROS2_RMW_MICROXRCEDDS_MAX_GUARD_CONDITION
+	int "Max number of guard conditions"
+	default 4
+	help
+	  This value sets the maximum number of guard conditions for
+	  an application.
+
+config ROS2_RMW_MICROXRCEDDS_MAX_TOPICS
+	int "Max number of topics"
+	default -1
+	help
+	  This value sets the maximum number of topics for an
+	  application.  If set to -1 ROS2_RMW_MICROXRCEDDS_MAX_TOPICS
+	  ROS2_RMW_MICROXRCEDDS_MAX_PUBLISHERS +
+	  ROS2_RMW_MICROXRCEDDS_MAX_SUBSCRIPTIONS +
+	  ROS2_RMW_MICROXRCEDDS_MAX_NODES.
+
+config ROS2_RMW_MICROXRCEDDS_NODE_NAME_MAX_LENGTH
+	int "Max length of node name"
+	default 60
+	help
+	  This value sets the maximum number of characters for a node
+	  name.
+
+config ROS2_RMW_MICROXRCEDDS_TOPIC_NAME_MAX_LENGTH
+	int "Max length of topic name"
+	default 60
+	help
+	  This value sets the maximum number of characters for a topic
+	  name.
+
+config ROS2_RMW_MICROXRCEDDS_TYPE_NAME_MAX_LENGTH
+	int "Max length of type name"
+	default 100
+	help
+	  This value sets the maximum number of characters for a type
+	  name.
+
+config ROS2_RMW_MICROXRCEDDS_REF_BUFFER_LENGTH
+	int "Max length of reference buffer"
+	default 100
+	help
+	  This value sets the maximum number of characters for a
+	  reference buffer.
+
+config ROS2_RMW_MICROXRCEDDS_PUBLISH_RELIABLE_TIMEOUT
+	int "Default wait time in msec for publication in reliable mode"
+	default 1000
+	help
+	  This value sets the default time to wait for a publication
+	  in a reliable mode in milliseconds.
+
+config ROS2_RMW_MICROXRCEDDS_ENTITY_CREATION_TIMEOUT
+	int "Max wait time in msec for XRCE entity creation"
+	default 1000
+	help
+	  This value sets the default maximum time to wait for an XRCE
+	  entity creation in milliseconds.  If set to 0 best effort is
+	  used.
+
+config ROS2_RMW_MICROXRCEDDS_ENTITY_DESTRUCTION_TIMEOUT
+	int "Max wait time in msec for XRCE entity destruction"
+	default 1000
+	help
+	  This value sets the default maximum time to wait for an XRCE
+	  entity destruction in milliseconds.  If set to 0 best effort is
+	  used.
+
+config ROS2_RMW_MICROXRCEDDS_STREAM_HISTORY_INPUT
+	int
+	default 4
+
+config ROS2_RMW_MICROXRCEDDS_STREAM_HISTORY_OUTPUT
+	int
+	default 4
+
+config ROS2_RMW_MICROXRCEDDS_ALLOW_DYNAMIC_ALLOCATIONS
+	bool "Allow dynamic allocations"
+	help
+	  Enables increasing static pools with dynamic allocation when
+	  needed.
+
+endif
+
+endmenu

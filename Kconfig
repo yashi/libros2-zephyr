@@ -25,6 +25,8 @@ config MICRO_XRCE_DDS_CLIENT_TCP
 config MICRO_XRCE_DDS_CLIENT_CUSTOM
 	bool "Micro XRCE-DDS Client with custom transport API"
 
+rsource "modules/rmw_microxrcedds/Kconfig"
+
 endif
 
 endmenu
