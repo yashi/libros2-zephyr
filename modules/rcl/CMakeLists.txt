@@ -7,6 +7,7 @@ if(CONFIG_MICRO_ROS)
 
   zephyr_library_named(ros2_rcl)
   zephyr_library_include_directories(PUBLIC ${ZEPHYR_CURRENT_MODULE_DIR}/rcl/include)
+  zephyr_library_compile_definitions(-DROS_PACKAGE_NAME="rcl")
   zephyr_library_link_libraries(
     ros2_action_msgs
     ros2_builtin_interfaces
@@ -61,6 +62,7 @@ if(CONFIG_MICRO_ROS)
 
   zephyr_library_named(ros2_rcl_action)
   zephyr_library_include_directories(PUBLIC ${ZEPHYR_CURRENT_MODULE_DIR}/rcl_action/include)
+  zephyr_library_compile_definitions(-DROS_PACKAGE_NAME="rcl_action")
   zephyr_library_link_libraries(
     ros2_action_msgs
     ros2_rcl
