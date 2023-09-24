@@ -21,6 +21,7 @@ if(CONFIG_MICRO_ROS)
   )
 
   zephyr_library_compile_definitions(_DEFAULT_SOURCE)
+  zephyr_library_compile_definitions(-DROS_PACKAGE_NAME="rclc")
 
   zephyr_library_link_libraries(
     ros2_action_msgs
