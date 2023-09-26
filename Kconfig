@@ -16,15 +16,7 @@ config APP_LINK_WITH_ROS2
 	bool "Link 'app' with micro-ROS"
 	default y
 
-config MICRO_XRCE_DDS_CLIENT_UDP
-	bool "Micro XRCE-DDS Client with UDP"
-
-config MICRO_XRCE_DDS_CLIENT_TCP
-	bool "Micro XRCE-DDS Client with TCP"
-
-config MICRO_XRCE_DDS_CLIENT_CUSTOM
-	bool "Micro XRCE-DDS Client with custom transport API"
-
+rsource "modules/microxrcedds-client/Kconfig"
 rsource "modules/rmw_microxrcedds/Kconfig"
 
 endif
