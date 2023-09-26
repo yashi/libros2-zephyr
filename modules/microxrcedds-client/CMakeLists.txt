@@ -56,6 +56,9 @@ if(CONFIG_MICRO_ROS)
   set(UCLIENT_SERIAL_TRANSPORT_MTU 512 CACHE STRING "Set the Serial transport MTU.")
   set(UCLIENT_CUSTOM_TRANSPORT_MTU 512 CACHE STRING "Set the Custom transport MTU.")
 
+  option(UCLIENT_HARD_LIVELINESS_CHECK "Enable hard liveliness check." ON)
+  set(UCLIENT_HARD_LIVELINESS_CHECK_TIMEOUT 10000 CACHE STRING "Set the hard liveliness check interval in milliseconds.")
+
   set(UCLIENT_PLATFORM_ZEPHYR ON)
 
   configure_file(${ZEPHYR_CURRENT_MODULE_DIR}/include/uxr/client/config.h.in
